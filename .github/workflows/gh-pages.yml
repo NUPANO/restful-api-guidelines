@@ -1,4 +1,4 @@
-name: Deploy API docs to GitHub pages
+name: Deploy to GitHub Pages
 
 on:
   workflow_run:
