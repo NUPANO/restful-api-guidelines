@@ -39,8 +39,11 @@ jobs:
           name: html-output
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
+          path: ./output/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: './output/'
 
       - uses: actions/deploy-pages@v4
         id: deployment
-        with:
-          artifact_name: html-output
