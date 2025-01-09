@@ -38,6 +38,7 @@ jobs:
         with:
           name: html-output
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
 
       - uses: actions/deploy-pages@v4
         id: deployment
