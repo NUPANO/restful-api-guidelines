@@ -15,6 +15,12 @@ jobs:
 
       - name: Build AsciiDoc
         run: docker run --interactive --volume=${{ github.workspace }}:/documents/ asciidoctor/docker-asciidoctor:latest asciidoctor -D /documents/output index.adoc
+
+      - name: Verify output directory
+        run: |
+          echo "Checking contents of the output directory..." 
+          ls -al output/
+
       - name: Upload output
         uses: actions/upload-artifact@v4
         with:
