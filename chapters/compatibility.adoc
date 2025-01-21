@@ -122,10 +122,11 @@ Custom media type format should have the following pattern:
 
 [source,http]
 ----
-application/vnd.<context-name>.<resource-name>.<sub-resource-name>+json;version=<version>;flavour=<flavour>
+application/vnd.nupano.<context-name>.<resource-name>.<sub-resource-name>+json;version=<version>;flavour=<flavour>
 ----
 
 * `<resource-name>` is the name of the resource that is represented in the request/response body, e.g. `app`, `machine` or `organization` - always lowercase, singular
+* `<sub-resource-name>` is the name of the resource that is dependend on `<resource-name>` (optional)
 * `<version>` is a (sequence) number, e.g. `2`
 * `<flavour>` is a non-describing name for the type or representation, see below for more details
 
