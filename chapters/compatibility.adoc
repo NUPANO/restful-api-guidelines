@@ -139,7 +139,7 @@ However we do not want to bind representations of our models to exactly one use-
 Example: the model that is used in the app inventory to show machines including their apps should not be called `machine-list-app-inventory`.
 This leads us to the introduction of generic flavours where the name solely exists to identify the representation itself, and not its use case.
 
-Flavours can have any name you seem fit, but they should follow the same theme within the same service (e.g ice cream flavours for machine models, star wars planets for ticket models, colors for organization models).
+Flavours can have any name you seem fit, but in favor of general alignment across our APIs we are using colors, even if used across different context's they bear no meaning and can represent different models in different APIs.
 
 === Example
 
