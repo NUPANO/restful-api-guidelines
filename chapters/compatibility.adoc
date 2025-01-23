@@ -110,7 +110,8 @@ However, when API versioning is unavoidable, you have to design your multi-versi
 Media type versioning is less tightly coupled since it supports content negotiation and hence reduces complexity of release management.
 
 Version information and media type are provided together via the HTTP `Content-Type` header — e.g.
-`application/vnd.nupano.apps.app+json;version=2;flavour=vanilla`.
+
+`application/vnd.nupano.apps.app+json;version=2;flavor=vanilla`.
 For incompatible changes, a new media type version for the resource is created.
 To generate the new representation version, consumer and producer can do <<244, content negotiation>> using the HTTP `Content-Type` and `Accept` headers.
 
@@ -122,24 +123,27 @@ Custom media type format should have the following pattern:
 
 [source,http]
 ----
-application/vnd.nupano.<context-name>.<resource-name>.<sub-resource-name>+json;version=<version>;flavour=<flavour>
+application/vnd.nupano.<context-name>.<resource-name>.<sub-resource-name>+json;version=<version>;flavor=<flavor>
 ----
 
 * `<resource-name>` is the name of the resource that is represented in the request/response body, e.g. `app`, `machine` or `organization` - always lowercase, singular
 * `<sub-resource-name>` is the name of the resource that is dependend on `<resource-name>` (optional)
 * `<version>` is a (sequence) number, e.g. `2`
-* `<flavour>` is a non-describing name for the type or representation, see below for more details
+* `<flavor>` is a non-describing name for the type or representation, see below for more details
 
-=== Flavours
+=== Flavors
 
 In addition to using custom content types for versioning, we use them to offer options for data representation to users of our APIs.
 In accordance to our (mostly UI driven) use-cases we want to be able to use the same API to retrieve a list of resources with all possible details as well as the same list, but with only the basic attributes needed for any given use case (think large list of machines, but only the name is shown or same list of machines but we are also interested in the number of installed apps, components or tickets).
 
-However we do not want to bind representations of our models to exactly one use-case, hence we must avoid naming the flavours in accordance to the first use-case that warrants their existence.
+However we do not want to bind representations of our models to exactly one use-case, hence we must avoid naming the flavors in accordance to the first use-case that warrants their existence.
 Example: the model that is used in the app inventory to show machines including their apps should not be called `machine-list-app-inventory`.
-This leads us to the introduction of generic flavours where the name solely exists to identify the representation itself, and not its use case.
+This leads us to the introduction of generic flavors where the name solely exists to identify the representation itself, and not its use case.
 
-Flavours can have any name you seem fit, but in favor of general alignment across our APIs we are using colors, even if used across different contexts they bear no meaning and can represent different models in different APIs.
+
+Flavors can have any name you seem fit, but in favor of general alignment across our APIs we are using colors, even if used across different contexts they bear no meaning and can represent different models in different APIs.
+=======
+
 
 === Example
 
@@ -163,14 +167,14 @@ Media type versioning should...
 * Include media type versions in request and response headers to increase visibility
 * Include `Content-Type` in the `Vary` header to enable proxy caches to differ between versions
 * Include a `version` property as part of the media type, e.g `version=1`
-* (Optional) Include a `flavour` property to allow control of the granularity of the response model
+* (Optional) Include a `flavor` property to allow control of the granularity of the response model
 
 [source,http]
 ----
 Vary: Content-Type
 ----
 
-NOTE: Every endpoint has to always accept the `application/json` media type without versioning - however we cannot guarantee that the response will be stable forever, we always return the latest version of the content type in the flavour that returns the most data.
+NOTE: Every endpoint has to always accept the `application/json` media type without versioning - however we cannot guarantee that the response will be stable forever, we always return the latest version of the content type in the flavor that returns the most data.
 
 Further reading:
 https://apisyouwonthate.com/blog/api-versioning-has-no-right-way[API
