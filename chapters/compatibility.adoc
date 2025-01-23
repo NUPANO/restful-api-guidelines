@@ -110,6 +110,7 @@ However, when API versioning is unavoidable, you have to design your multi-versi
 Media type versioning is less tightly coupled since it supports content negotiation and hence reduces complexity of release management.
 
 Version information and media type are provided together via the HTTP `Content-Type` header — e.g.
+
 `application/vnd.nupano.apps.app+json;version=2;flavor=vanilla`.
 For incompatible changes, a new media type version for the resource is created.
 To generate the new representation version, consumer and producer can do <<244, content negotiation>> using the HTTP `Content-Type` and `Accept` headers.
@@ -139,7 +140,10 @@ However we do not want to bind representations of our models to exactly one use-
 Example: the model that is used in the app inventory to show machines including their apps should not be called `machine-list-app-inventory`.
 This leads us to the introduction of generic flavors where the name solely exists to identify the representation itself, and not its use case.
 
+
 Flavors can have any name you seem fit, but in favor of general alignment across our APIs we are using colors, even if used across different contexts they bear no meaning and can represent different models in different APIs.
+=======
+
 
 === Example
 

@@ -1,6 +1,6 @@
-= Build
+# Build
 
-== Create HTML site
+## Create HTML site
 ```
-docker run --interactive --volume=.:/documents/ asciidoctor/docker-asciidoctor:latest asciidoctor -D /documents/output index.adoc
+docker run --rm --interactive --volume=.:/documents/ asciidoctor/docker-asciidoctor:latest asciidoctor -D /documents/output index.adoc
 ```
