@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "dependsOn": ["Docker pull"],
+            "command": "docker",
+            "args": [
+                "run"
+                "--rm",
+                "--interactive",
+                "--volume=.:/documents/",
+                "asciidoctor/docker-asciidoctor:latest"
+                "asciidoctor",
+                "--destination-dir=/documents/output",
+                "index.adoc"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Docker pull",
+            "type": "shell",
+            "command": "docker pull asciidoctor/docker-asciidoctor:latest",
+            "problemMatcher": []
+        }
+    ]
+}
