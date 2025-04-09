@@ -223,14 +223,20 @@ You should use <= 3 sub-resource (nesting) levels -- more levels increase API co
 
 See also <<118>>.
 
+
 [#137]
 == {MUST} stick to conventional query parameters
 
 **If** your service covers use cases that require it to provide query support for searching, sorting, filtering, and paginating, you must stick to the following naming conventions:
 
 * [[q]]{q}: default query parameter, e.g. used by browser tab completion; should have an entity specific alias, e.g. sku.
-* [[sort]]{sort}: comma-separated list of fields (as defined by <<154>>) to define the sort order.
-To indicate sorting direction, fields may be prefixed with `+` (ascending) or `-` (descending), e.g. /sales-orders?sort=+id.
+* [[sort]]{sort}:
+field name and sorting direction separated by a comma.
+Sorting by multiple fields follows the _multiple parameters_ approach, as defined by <<154>>.
+Examples:
+** `+/users?sort=email,asc+`: Sorts by the user's email address in ascending order
+** `+/users?sort=email,desc+`: Sorts by the user's email address in descending order
+** `+/users?sort=lastName,desc&sort=firstName,asc+`: First sorts by the user's last name in descending order, then by the user's first name in ascending order
 * [[offset]]{offset}: numeric offset of the first element provided on a page representing a collection request.
 See <<pagination>> section below.
 * [[limit]]{limit}: client suggested limit to restrict the number of entries on a page.
