@@ -142,7 +142,6 @@ This leads us to the introduction of generic flavors where the name solely exist
 
 
 Flavors can have any name you seem fit, but in favor of general alignment across our APIs we are using colors, even if used across different contexts they bear no meaning and can represent different models in different APIs.
-=======
 
 
 === Example
