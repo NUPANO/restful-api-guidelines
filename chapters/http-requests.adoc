@@ -172,17 +172,15 @@ Header and query parameters allow to provide a collection of values, either by p
 | {RFC-6570}#section-3.2.8[RFC 6570 Section 3.2.8]
 |=========================================================================
 
-As OpenAPI does not support both schemas at once, an API specification must explicitly define the collection format to guide consumers as follows:
+As OpenAPI does not support both schemas at once, the NUPANO Suite APIs will make use of only the `Multiple Parameters` approach:
 
-[,cols="14%,40%,46%",options="header",]
-|===============================================================
-| Parameter Type | Comma-separated Values | Multiple Parameters
-| Header | `style: simple, explode: false` | not allowed (see
-{RFC-9110}#section-5.3[RFC 9110 Section 5.3])
-| Query  | `style: form, explode: false`   | `style: form, explode: true`
-|===============================================================
+|=========================================================================
+| Parameter Type | Values
+| Header         | `Header: value1, Header: value2`
+| Query          | `?param=value1&param=value2`
+|=========================================================================
 
-When choosing the collection format, take into account the tool support, the escaping of special characters and the maximal URL length.
+See also {RFC-6570}#section-3.2.8[RFC 6570 Section 3.2.8]
 
 [#236]
 == {SHOULD} design simple query languages using query parameters
