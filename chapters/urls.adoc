@@ -223,13 +223,14 @@ You should use <= 3 sub-resource (nesting) levels -- more levels increase API co
 
 See also <<118>>.
 
-
 [#137]
 == {MUST} stick to conventional query parameters
 
 **If** your service covers use cases that require it to provide query support for searching, sorting, filtering, and paginating, you must stick to the following naming conventions:
 
-* [[q]]{q}: default query parameter, e.g. used by browser tab completion; should have an entity specific alias, e.g. sku.
+* [[q]]{q}: default query parameter, used for full-text search across (potentially) multiple object attributes.
+Returns results that only match partially.
+The API documentation {MUST} specify which attributes are included in the search.
 * [[sort]]{sort}:
 field name and sorting direction separated by a comma.
 Sorting by multiple fields follows the _multiple parameters_ approach, as defined by <<154>>.
