@@ -194,7 +194,6 @@ Query parameters should have the following aspects specified:
 * Reference to corresponding property, if any
 * Value range, e.g. inclusive vs. exclusive
 * Comparison semantics (equals, less than, greater than, etc)
-* Implications when combined with other queries, e.g. _and_ vs. _or_
 
 Our query language needs to be easy to understand and only ever be implemented if an existing or new use case dictates it.
 It is strongly discouraged to add query options for attributes or filters that are not immediately necessary for clients to use.
