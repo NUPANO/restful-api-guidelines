@@ -133,8 +133,9 @@ As this can happen for almost every endpoint, APIs should normally not document 
 [.indent]
 The user is not authorized to use this resource.
 For an API, this can mean that the request's token was valid, but was missing a scope for this endpoint.
-Or that some object-specific authorization failed.
-We recommend only documenting the second case.
+In general, according to https://owasp.org/www-community/vulnerabilities/Missing_Error_Handling[OWASP missing error handling] and https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/01-Testing_for_Error_Code[OWASP WSTG testing for error code], we recommend using 404 instead of 403.
+This helps avoid leaking information about the structure of data at runtime.
+However, since this may impact usability (UX), it's a recommendation rather than a strict rule - exceptions may apply.
 
 [[status-code-404]]
 ==== 404 Not found {rfc-status-404} {use} {do-not-document} {ALL}
