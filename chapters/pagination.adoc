@@ -2,8 +2,8 @@
 = REST Design - Pagination
 
 [#160]
-== {SHOULD} support pagination
-Access to lists of data items should support pagination to protect the service against overload as well as to
+== {MUST} support pagination
+Access to lists of data items must support pagination to protect the service against overload as well as to
 support client side iteration and batch processing experience. This holds true for all lists that are (potentially) larger than just a few hundred entries.
 
 There are two well known page iteration techniques:
@@ -15,20 +15,43 @@ There are two well known page iteration techniques:
 **Note:** To provide a consistent look and feel of pagination patterns, you must stick to the common query parameter names defined <<137>>.
 
 == {SHOULD} use Offset-based pagination
-Both ways of pagination have their benefits. But the traits which elevate Cursor-based pagination, like high-data volumes or storage in NoSQL databases is not applicable to our current setup.
+Both ways of pagination have their benefits. But the traits which elevate Cursor-based pagination, like high-data volumes or storage in NoSQL databases is not applicable to our current requirements.
 Offset-based pagination is easier to implement and maintain. Other reasons to chose Offset-based pagination:
 
 * Small data sets of only a few hundred entries.
-* we have pages shown in UI
+* showing and jumping directly to pages is a requirement e.g. 1, 2, 3, 4, ... 8
 * current datasets are not likely to change very frequent
 * Framework support, our chosen tech stack provides easy to use support for Offset-based pagination
-* SQL is well-supported by Offset-based pagination
 
 == {MAY} use Cursor-based pagination
 Cursor-based pagination has its upsides, and might be better than Offset-based pagination if:
 
-* The dataset is large entries and often changing or added upon
+* The dataset is or will be .very large
+* dataset changes frequent
 * Data is stored in NoSQL database
-* Support for infinite scroll is required
 * amount of sorting option is minimal and no multi-sort is required
-* jumping to a specific page is not needed
+* Support for infinite scroll is required
+** logs
+** measurements
+
+
+== {SHOULD} provide additional page information
+
+In addition to the paged resources the response should provide a page object containing the following fields:
+
+* content: array of the requested resources, the name could change depending on which resources have been requested
+* offset: the current offset of the page
+* limit: the size of the data chunk
+* totalElements: how many elements in total are available (used to calculate the page numbers in UI)
+
+[source,json]
+----
+{
+  "content": [],
+  "page": {
+    "offset": 110,
+    "limit": 10,
+    "totalElements": 150
+  }
+}
+----
