@@ -16,9 +16,10 @@ There are two well known page iteration techniques:
 
 == {SHOULD} use Offset-based pagination
 Both ways of pagination have their benefits. But the traits which elevate Cursor-based pagination, like high-data volumes or storage in NoSQL databases is not applicable to our current setup.
-Therefor Offset-based pagination is easier to implement and maintain. Other reasons to chose Offset-based pagination:
+Offset-based pagination is easier to implement and maintain. Other reasons to chose Offset-based pagination:
 
-* Small data sets of only a few hundred entries. Performance gain of cursor-based pagination becomes significant for data sets which roughly exceed 200.000
+* Small data sets of only a few hundred entries.
+* we have pages shown in UI
 * current datasets are not likely to change very frequent
 * Framework support, our chosen tech stack provides easy to use support for Offset-based pagination
 * SQL is well-supported by Offset-based pagination
@@ -26,7 +27,7 @@ Therefor Offset-based pagination is easier to implement and maintain. Other reas
 == {MAY} use Cursor-based pagination
 Cursor-based pagination has its upsides, and might be better than Offset-based pagination if:
 
-* The dataset is large (>200.000) entries and often changing or added upon
+* The dataset is large entries and often changing or added upon
 * Data is stored in NoSQL database
 * Support for infinite scroll is required
 * amount of sorting option is minimal and no multi-sort is required
