@@ -23,6 +23,34 @@ Offset-based pagination is easier to implement and maintain. Other reasons to ch
 * current datasets are not likely to change very frequent
 * Framework support, our chosen tech stack provides easy to use support for Offset-based pagination
 
+=== Request parameters
+
+* *size*: specifies the size of the requested page
+* *page*: specifies the requested page number. Page numeration starts with 0
+
+=== Response model
+
+In addition to the paged resources the response {MUST} provide a page object containing the following fields:
+
+* number: number of the page, first page is 0
+* size: the content size which the pagination is based on
+* totalElements: how many elements in total are available
+* totalPages: how many pages are available with content
+
+
+[source,json]
+----
+{
+  "content": [],
+  "page": {
+      "number": 1,
+      "size": 10,
+      "totalElements": 150,
+      "totalPages": 15
+  }
+}
+----
+
 == {MAY} use Cursor-based pagination
 Offset-based pagination is the default, and deviation from that standard has to be discussed with the architects.
 Cursor-based pagination has its upsides, and might be better than Offset-based pagination if:
@@ -36,23 +64,8 @@ Cursor-based pagination has its upsides, and might be better than Offset-based p
 ** measurements
 
 
-== {MUSTY} provide additional page information
+=== Request parameters
+To be specified and defined before Cursor-based pagination is first implemented
 
-In addition to the paged resources the response should provide a page object containing the following fields:
-
-* content: array of the requested resources, the name could change depending on which resources have been requested
-* offset: the current offset of the page
-* limit: the size of the data chunk
-* totalElements: how many elements in total are available (used to calculate the page numbers in UI)
-
-[source,json]
-----
-{
-  "content": [],
-  "page": {
-    "offset": 110,
-    "limit": 10,
-    "totalElements": 150
-  }
-}
-----
+=== Response model
+To be specified and defined before Cursor-based pagination is first implemented
