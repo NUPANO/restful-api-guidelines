@@ -24,6 +24,7 @@ Offset-based pagination is easier to implement and maintain. Other reasons to ch
 * Framework support, our chosen tech stack provides easy to use support for Offset-based pagination
 
 == {MAY} use Cursor-based pagination
+Offset-based pagination is the default, and deviation from that standard has to be discussed with the architects.
 Cursor-based pagination has its upsides, and might be better than Offset-based pagination if:
 
 * The dataset is or will be .very large
@@ -35,7 +36,7 @@ Cursor-based pagination has its upsides, and might be better than Offset-based p
 ** measurements
 
 
-== {SHOULD} provide additional page information
+== {MUSTY} provide additional page information
 
 In addition to the paged resources the response should provide a page object containing the following fields:
 
