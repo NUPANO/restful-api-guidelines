@@ -239,6 +239,6 @@ Examples:
 ** `+/users?sort=email,desc+`: Sorts by the user's email address in descending order
 ** `+/users?sort=lastName,desc&sort=firstName,asc+`: First sorts by the user's last name in descending order, then by the user's first name in ascending order
 
-* Pagination: see <<160>> for paginated related parameters
+* see <<160>> for paginated related parameters
 
 See also <<236>> for support on how to model your services query language.
