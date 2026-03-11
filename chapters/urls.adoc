@@ -238,9 +238,7 @@ Examples:
 ** `+/users?sort=email,asc+`: Sorts by the user's email address in ascending order
 ** `+/users?sort=email,desc+`: Sorts by the user's email address in descending order
 ** `+/users?sort=lastName,desc&sort=firstName,asc+`: First sorts by the user's last name in descending order, then by the user's first name in ascending order
-* [[offset]]{offset}: numeric offset of the first element provided on a page representing a collection request.
-See <<pagination>> section below.
-* [[limit]]{limit}: client suggested limit to restrict the number of entries on a page.
-See <<pagination>> section below.
+
+* see <<160>> for paginated related parameters
 
 See also <<236>> for support on how to model your services query language.

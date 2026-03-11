@@ -1,8 +1,73 @@
 [[pagination]]
 = REST Design - Pagination
 
-We explicitly don't use pagination.
-Instead resource collections are controllable using predefined content-types to transport only required data for particular use cases.
-Based on content type backend services collect required data like app details, or org names and may cache them internally to provide data without additional requests in UI if required.
+[#160]
+== {MUST} support pagination
+Access to lists of data items must support pagination to protect the service against overload as well as to
+support client side iteration and batch processing experience. This holds true for all lists that are (potentially) larger than just a few hundred entries.
 
-If, at a later point in time, we are facing performance issues or encounter other problems that might be alleviated or solved by pagination, we will reconsider this decision.
+There are two well known page iteration techniques:
+
+* *Offset-based pagination*: numeric offset identifies the first page-entry
+
+* *Cursor-based pagination* — aka key-based pagination: a unique key identifies the first page-entry
+
+**Note:** To provide a consistent look and feel of pagination patterns, you must stick to the common query parameter names defined <<137>>.
+
+== {SHOULD} use Offset-based pagination
+Both ways of pagination have their benefits. But the traits which elevate Cursor-based pagination, like high-data volumes or storage in NoSQL databases is not applicable to our current requirements.
+Offset-based pagination is easier to implement and maintain. Other reasons to chose Offset-based pagination:
+
+* Small data sets of only a few hundred entries.
+* showing and jumping directly to pages is a requirement e.g. 1, 2, 3, 4, ... 8
+* current datasets are not likely to change very frequent
+* Framework support, our chosen tech stack provides easy to use support for Offset-based pagination
+
+=== Request parameters
+
+* *size*: specifies the size of the requested page
+* *page*: specifies the requested page number. Page numeration starts with 0
+
+Both, size and page, {SHOULD} have sensible defaults and limits defined, depending on the use case.
+
+=== Response model
+
+In addition to the paged resources the response {MUST} provide a page object containing the following fields:
+
+* number: number of the page, first page is 0
+* size: the content size which the pagination is based on
+* totalElements: how many elements in total are available
+* totalPages: how many pages are available with content
+
+
+[source,json]
+----
+{
+  "content": [],
+  "page": {
+      "number": 1,
+      "size": 10,
+      "totalElements": 150,
+      "totalPages": 15
+  }
+}
+----
+
+== {MAY} use Cursor-based pagination
+Offset-based pagination is the default, and deviation from that standard has to be discussed with the architects.
+Cursor-based pagination has its upsides, and might be better than Offset-based pagination if:
+
+* The dataset is or is expected to be very large
+* dataset changes frequently
+* Data is stored in databases that are non-relational
+* amount of sorting option is minimal and no multi-sort is required
+* Support for high performant infinite scroll is required
+** logs
+** measurements
+
+
+=== Request parameters
+To be specified and defined before Cursor-based pagination is first implemented
+
+=== Response model
+To be specified and defined before Cursor-based pagination is first implemented

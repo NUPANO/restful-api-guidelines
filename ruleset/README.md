@@ -45,7 +45,7 @@ npx @stoplight/spectral-cli lint --ruleset <path to nupano.yml> example/example-
 | [#118a][#118a] | [MUST property names must be ASCII camelCase: `^[a-z]+((\d)([A-Z0-9][a-z0-9]+))*([A-Z])?$`][#118a]   | - | A |
 | [#120][#120]   | [SHOULD pluralize array names][#120]                                                                 | - | B |
 | [#122][#122]   | [MUST not use `null` for boolean properties][#122]                                                   | :grey_exclamation: | - |
-<!-- | [#123][#123]   | [MUST use same semantics for `null` and absent properties][#123]                                     | :grey_exclamation: | - | -->
+<!-- | [#123][#123]                                                                                         | [MUST use same semantics for `null` and absent properties][#123]                                     | :grey_exclamation: | - | -->
 | [#124][#124]   | [SHOULD not use `null` for empty arrays][#124]                                                       | :grey_exclamation: | - |
 | [#125][#125]   | [SHOULD represent enumerations as strings][#125]                                                     | - | ? |
 | [#126][#126]   | [SHOULD define dates properties compliant with RFC 3339][#126]                                       | - | ? |
@@ -83,7 +83,7 @@ npx @stoplight/spectral-cli lint --ruleset <path to nupano.yml> example/example-
 | [#157][#157]   | [SHOULD support partial responses via filtering][#157]                                               | :grey_exclamation: | - |
 | [#158][#158]   | [SHOULD allow optional embedding of sub-resources][#158]                                             | :grey_exclamation: | - |
 | [#159][#159]   | [MUST support pagination][#159]                                                                      | - | - |
-| [#160][#160]   | [SHOULD prefer cursor-based pagination, avoid offset-based pagination][#160]                         | - | - |
+| [#160][#160]   | [SHOULD prefer offset-based pagination, may use cursor-based pagination][#160]                        | - | - |
 | [#161][#161]   | [SHOULD use pagination links where applicable][#161]                                                 | - | - |
 | [#162][#162]   | [MUST use REST maturity level 2][#162]                                                               | - | - |
 | [#163][#163]   | [MAY use REST maturity level 3 - HATEOAS][#163]                                                      | - | - |
@@ -145,7 +145,7 @@ npx @stoplight/spectral-cli lint --ruleset <path to nupano.yml> example/example-
 | [#229][#229]   | [SHOULD consider to design `POST` and `PATCH` idempotent][#229]                                      | :grey_exclamation: | - |
 | [#230][#230]   | [MAY consider to support `Idempotency-Key` header][#230]                                             | :grey_exclamation: | - |
 | [#231][#231]   | [Should use secondary key for idempotent `POST` design][#231]                                        | :grey_exclamation: | - |
-| [#233a][#233a] | [MUST request must use tracing headers][#233a]                                                    | - | - |
+| [#233a][#233a] | [MUST request must use tracing headers][#233a]                                                       | - | - |
 | [#234][#234]   | [MUST only use durable and immutable remote references][#234]                                        | :grey_exclamation: | - |
 | [#235][#235]   | [SHOULD name date/time properties with `_at` suffix][#235]                                           | - | - |
 | [#236][#236]   | [SHOULD design simple query languages using query parameters][#236]                                  | :grey_exclamation: | - |
