@@ -61,7 +61,7 @@ Cursor-based pagination has its upsides, and might be better than Offset-based p
 * dataset changes frequently
 * Data is stored in databases that are non-relational
 * amount of sorting option is minimal and no multi-sort is required
-* Support high performant infinite scroll is required
+* Support for high performant infinite scroll is required
 ** logs
 ** measurements
 
