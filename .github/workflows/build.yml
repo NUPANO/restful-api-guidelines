@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Docker
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v4
 
       - name: Build AsciiDoc
         run: docker run --interactive --volume=${{ github.workspace }}:/documents/ asciidoctor/docker-asciidoctor:latest asciidoctor -D /documents/output index.adoc
